@@ -48,6 +48,23 @@
   --t-slow: 0.8s var(--ease);
 }
 
+/* ---------- CUSTOM SCROLLBAR ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray-700);
+  border-radius: 99px;
+  border: 2px solid var(--black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+
 /* ---------- RESET ---------- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -904,16 +921,16 @@ button:focus-visible {
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(4, 5, 7, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(4, 5, 7, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 1100;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--t-mid), visibility var(--t-mid);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .lightbox.is-open {
@@ -921,14 +938,34 @@ button:focus-visible {
   visibility: visible;
 }
 
+.lightbox__card {
+  background: var(--gray-900);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  max-width: 580px;
+  width: 90%;
+  padding: 24px;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(0, 120, 212, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.4s var(--ease);
+}
+
+.lightbox.is-open .lightbox__card {
+  transform: scale(1);
+}
+
 .lightbox__close {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--glass-bg);
+  background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border);
   color: var(--white);
   display: grid;
@@ -937,53 +974,24 @@ button:focus-visible {
   z-index: 10;
 }
 .lightbox__close:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   color: var(--blue-light);
   transform: rotate(90deg);
 }
 
-.lightbox__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--glass-bg-strong);
+.lightbox__view-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
   border: 1px solid var(--glass-border);
-  color: var(--white);
-  display: grid;
-  place-items: center;
-  transition: all var(--t-fast);
-  z-index: 5;
-}
-.lightbox__arrow:hover {
-  background: var(--blue);
-  border-color: var(--blue-light);
-  transform: translateY(-50%) scale(1.08);
-}
-.lightbox__arrow--prev { left: 40px; }
-.lightbox__arrow--prev:hover { transform: translateY(-50%) translateX(-4px) scale(1.08); }
-.lightbox__arrow--next { right: 40px; }
-.lightbox__arrow--next:hover { transform: translateY(-50%) translateX(4px) scale(1.08); }
-
-.lightbox__content {
-  max-width: 900px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
 }
 
 .lightbox__view {
   width: 100%;
-  aspect-ratio: 16/9;
-  background: #000;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8);
-  overflow: hidden;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -997,43 +1005,72 @@ button:focus-visible {
   opacity: 0;
 }
 
+.lightbox__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(7, 9, 12, 0.6);
+  border: 1px solid var(--glass-border);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  transition: all var(--t-fast);
+  z-index: 5;
+  backdrop-filter: blur(4px);
+}
+.lightbox__arrow:hover {
+  background: var(--blue);
+  border-color: var(--blue-light);
+  color: var(--white);
+}
+.lightbox__arrow--prev { left: 12px; }
+.lightbox__arrow--prev:hover { transform: translateY(-50%) translateX(-2px) scale(1.05); }
+.lightbox__arrow--next { right: 12px; }
+.lightbox__arrow--next:hover { transform: translateY(-50%) translateX(2px) scale(1.05); }
+
 .lightbox__footer {
-  text-align: center;
+  text-align: left;
+  padding: 0 4px;
 }
 
 .lightbox__counter {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--blue-light);
-  display: block;
-  margin-bottom: 6px;
+  display: inline-block;
+  margin-bottom: 4px;
 }
 
 .lightbox__caption {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--white);
   font-weight: 500;
+  line-height: 1.4;
 }
 
 .lightbox__thumbs {
   display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 10px;
+  gap: 8px;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-bottom: 4px;
 }
 
 .lightbox__thumb {
-  width: 70px;
+  width: 60px;
   aspect-ratio: 16/9;
   border-radius: var(--radius-sm);
   border: 2px solid transparent;
   overflow: hidden;
   background: var(--gray-900);
-  opacity: 0.5;
+  opacity: 0.4;
   transition: all var(--t-fast);
   padding: 0;
+  flex-shrink: 0;
 }
 
 .lightbox__thumb img {
@@ -1043,41 +1080,27 @@ button:focus-visible {
 }
 
 .lightbox__thumb:hover {
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .lightbox__thumb.active {
   opacity: 1;
   border-color: var(--blue-light);
-  box-shadow: 0 0 12px var(--blue-soft);
 }
 
-@media (max-width: 860px) {
-  .lightbox__arrow {
-    width: 44px;
-    height: 44px;
+@media (max-width: 540px) {
+  .lightbox__card {
+    padding: 16px;
+    gap: 12px;
   }
-  .lightbox__arrow--prev { left: 16px; }
-  .lightbox__arrow--next { right: 16px; }
-  
   .lightbox__close {
-    top: 16px;
-    right: 16px;
-    width: 44px;
-    height: 44px;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
   }
-  
-  .lightbox__content {
-    width: 95%;
-    gap: 16px;
-  }
-  
   .lightbox__caption {
-    font-size: 1rem;
-  }
-  
-  .lightbox__thumb {
-    width: 55px;
+    font-size: 0.9rem;
   }
 }
 
