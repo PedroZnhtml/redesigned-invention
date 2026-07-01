@@ -288,12 +288,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const thumbs = document.querySelectorAll('.lightbox__thumb');
 
   const galleryImages = [
-    { src: '1.png', alt: 'Visão Geral do Painel de Chamados', caption: 'Visão Geral do Painel de Chamados - Sistema de Chamados de TI' },
-    { src: '2.png', alt: 'Formulário de Abertura de Novo Chamado', caption: 'Formulário de Abertura de Novo Chamado - Interface intuitiva para o usuário' },
-    { src: '3.png', alt: 'Detalhamento e Acompanhamento de Solicitações', caption: 'Detalhamento e Acompanhamento - Status em tempo real e responsáveis' },
-    { src: '4.png', alt: 'Histórico de Interações e Comentários', caption: 'Histórico de Interações - Registro de todas as ações e mensagens' },
+    { src: '6.png', alt: 'Relatórios de Desempenho e Métricas', caption: 'Relatórios e Métricas - Dashboard integrado para análise gerencial' },
     { src: '5.png', alt: 'Fluxo Automatizado de Notificações e SLA', caption: 'Notificações e SLA - Monitoramento automático do tempo de atendimento' },
-    { src: '6.png', alt: 'Relatórios de Desempenho e Métricas', caption: 'Relatórios e Métricas - Dashboard integrado para análise gerencial' }
+    { src: '4.png', alt: 'Histórico de Interações e Comentários', caption: 'Histórico de Interações - Registro de todas as ações e mensagens' },
+    { src: '3.png', alt: 'Detalhamento e Acompanhamento de Solicitações', caption: 'Detalhamento e Acompanhamento - Status em tempo real e responsáveis' },
+    { src: '2.png', alt: 'Formulário de Abertura de Novo Chamado', caption: 'Formulário de Abertura de Novo Chamado - Interface intuitiva para o usuário' },
+    { src: '1.png', alt: 'Visão Geral do Painel de Chamados', caption: 'Visão Geral do Painel de Chamados - Sistema de Chamados de TI' }
   ];
 
   let currentSlideIndex = 0;
