@@ -372,5 +372,190 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ----------------------------------------------------------
+     12. GERADOR DE CURRÍCULO OTINIZADO PARA ATS
+  ---------------------------------------------------------- */
+  const downloadATSBtn = document.getElementById('downloadATSResume');
+  
+  if (downloadATSBtn) {
+    downloadATSBtn.addEventListener('click', () => {
+      // Cria um iframe oculto temporário para impressão
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+      
+      const doc = iframe.contentWindow.document;
+      
+      const resumeHTML = `
+        <!DOCTYPE html>
+        <html lang="pt-BR">
+        <head>
+          <meta charset="UTF-8">
+          <title>Curriculo - Pedro Silva Manso</title>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
+            body {
+              font-family: Arial, Helvetica, sans-serif;
+              color: #333333;
+              line-height: 1.5;
+              margin: 40px;
+              font-size: 11pt;
+            }
+            .header {
+              border-bottom: 2px solid #0078D4;
+              padding-bottom: 15px;
+              margin-bottom: 20px;
+            }
+            .name {
+              font-size: 24pt;
+              font-weight: bold;
+              color: #0078D4;
+              margin: 0;
+            }
+            .role {
+              font-size: 14pt;
+              color: #555555;
+              margin: 5px 0 10px 0;
+              font-weight: bold;
+            }
+            .contact-info {
+              font-size: 10pt;
+              color: #666666;
+            }
+            .section {
+              margin-bottom: 22px;
+            }
+            .section-title {
+              font-size: 12pt;
+              font-weight: bold;
+              color: #0078D4;
+              border-bottom: 1px solid #dddddd;
+              padding-bottom: 3px;
+              margin-bottom: 8px;
+              text-transform: uppercase;
+            }
+            .summary {
+              text-align: justify;
+            }
+            .skills-list {
+              margin: 5px 0;
+              padding-left: 20px;
+            }
+            .skills-list li {
+              margin-bottom: 4px;
+            }
+            .job {
+              margin-bottom: 15px;
+            }
+            .job-header {
+              display: flex;
+              justify-content: space-between;
+              font-weight: bold;
+              color: #333333;
+            }
+            .job-title {
+              color: #444444;
+            }
+            .job-date {
+              color: #777777;
+              font-weight: normal;
+            }
+            .job-bullets {
+              margin: 5px 0;
+              padding-left: 20px;
+            }
+            .job-bullets li {
+              margin-bottom: 4px;
+            }
+            @media print {
+              body {
+                margin: 20px;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1 class="name">Pedro Silva Manso</h1>
+            <div class="role">Desenvolvedor Power Apps & Power Platform</div>
+            <div class="contact-info">
+              Brasília, DF | (61) 99634-2098 | mansopedro94@gmail.com<br>
+              LinkedIn: linkedin.com/in/pedro-e-silva-manso-659a76249/
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Resumo Profissional</div>
+            <p class="summary">
+              Desenvolvedor focado em Power Apps e Power Platform, com experiência prática na criação de soluções de automação e digitalização de processos corporativos. Especialista em integrar o ecossistema Microsoft (Power Automate, SharePoint, Power BI, Dataverse, M365) para otimizar fluxos de trabalho e gerar indicadores estratégicos. Habilidade em unir lógica de programação (JavaScript, HTML, CSS, SQL) a interfaces modernas e intuitivas, com foco na eficiência operacional e experiência do usuário.
+            </p>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Habilidades Técnicas</div>
+            <ul class="skills-list">
+              <li><strong>Power Platform:</strong> Power Apps (Canvas e Model-driven), Power Automate (Fluxos de automação e aprovações), Power BI (Dashboards e relatórios analíticos), Dataverse (Modelagem de dados segura).</li>
+              <li><strong>Ecossistema Microsoft:</strong> SharePoint Online (Listas, portais, bibliotecas de documentos), Teams, Outlook, Microsoft 365.</li>
+              <li><strong>Desenvolvimento & Banco de Dados:</strong> JavaScript, HTML5, CSS3, SQL Server, versionamento Git.</li>
+            </ul>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Experiência Profissional</div>
+            <div class="job">
+              <div class="job-header">
+                <span class="job-title">Desenvolvedor Power Platform / Power Apps</span>
+                <span class="job-date">2025 - Presente</span>
+              </div>
+              <ul class="job-bullets">
+                <li>Desenvolvimento e implantação de aplicações Canvas sob medida, integradas ao SharePoint, facilitando a digitalização de formulários internos.</li>
+                <li>Modelagem de dados relacionais e segurança da informação utilizando SharePoint Lists e Dataverse.</li>
+                <li>Automatização de fluxos de trabalho complexos e aprovações de chamados de TI com Power Automate, enviando notificações automáticas para Teams e Outlook.</li>
+                <li>Criação de dashboards gerenciais e relatórios interativos com Power BI para monitoramento de SLA e indicadores operacionais.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Projetos em Destaque</div>
+            <div class="job">
+              <div class="job-header">
+                <span class="job-title">Sistema de Chamados de TI</span>
+              </div>
+              <ul class="job-bullets">
+                <li>Aplicação integrada com listas de SharePoint para gerenciar a abertura, atribuição de responsáveis, status e acompanhamento de tempos de resposta (SLA) de chamados técnicos.</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="section">
+            <div class="section-title">Formação</div>
+            <div class="job">
+              <div class="job-header">
+                <span class="job-title">Desenvolvimento de Sistemas & Engenharia de Software</span>
+                <span class="job-date">Estudos Dirigidos / Especialização Microsoft</span>
+              </div>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+      
+      doc.open();
+      doc.write(resumeHTML);
+      doc.close();
+      
+      // Impõe foco e executa janela de impressão
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+      
+      // Remove o iframe após o comando de impressão
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+      }, 1000);
+    });
+  }
+
 });
+
 
