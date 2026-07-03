@@ -283,8 +283,17 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (downloadATSBtn) {
     downloadATSBtn.addEventListener('click', () => {
-      // Conteúdo HTML do currículo (string)
-      const cvHtml = `
+      // Cria o wrapper absoluto escondido atrás do fundo da página
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'absolute';
+      wrapper.style.left = '0';
+      wrapper.style.top = '0';
+      wrapper.style.zIndex = '-9999';
+      wrapper.style.opacity = '1';
+      wrapper.style.pointerEvents = 'none';
+
+      // Conteúdo HTML do currículo
+      wrapper.innerHTML = `
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
           .cv-body {
@@ -458,18 +467,29 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
+      document.body.appendChild(wrapper);
+
       // Configurações do html2pdf
       const opt = {
         margin:       10,
         filename:     'Pedro_Silva_Manso_CV.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2.5, useCORS: true, letterRendering: true, logging: false },
+        html2canvas:  { 
+          scale: 2.5, 
+          useCORS: true, 
+          letterRendering: true, 
+          logging: false,
+          scrollY: 0
+        },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      // Gerar e baixar o PDF a partir da string HTML diretamente
-      html2pdf().set(opt).from(cvHtml).save().catch(err => {
+      // Gerar e baixar o PDF a partir do wrapper montado no DOM
+      html2pdf().set(opt).from(wrapper).save().then(() => {
+        document.body.removeChild(wrapper);
+      }).catch(err => {
         console.error('Erro ao gerar o PDF:', err);
+        document.body.removeChild(wrapper);
       });
     });
   }
