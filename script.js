@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="section">
             <div class="section-title">Resumo Profissional</div>
             <p class="summary">
-              Desenvolvedor focado em Power Apps e Power Platform, com experiência prática na criação de soluções de automação e digitalização de processos corporativos. Especialista em integrar o ecossistema Microsoft (Power Automate, SharePoint, Power BI, Dataverse, M365) para otimizar fluxos de trabalho e gerar indicadores estratégicos. Habilidade em unir lógica de programação (JavaScript, HTML, CSS, SQL) a interfaces modernas e intuitivas, com foco na eficiência operacional e experiência do usuário.
+              Meu nome é Pedro Silva Manso, tenho 21 anos e estou cursando Análise e Desenvolvimento de Sistemas. Sou uma pessoa curiosa e empenhada: gosto de entender a fundo cada problema antes de propor uma solução, e me dedico com disciplina a tudo que assumo — seja aprendendo uma tecnologia nova ou aperfeiçoando algo que já domino. Tenho focado minha trajetória na Power Platform, criando aplicações que transformam processos manuais e repetitivos em soluções simples e eficientes para quem usa no dia a dia. Estou sempre em busca de evoluir como desenvolvedor, unindo lógica de negócio a uma boa experiência de uso.
             </p>
           </div>
           

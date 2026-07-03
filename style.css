@@ -567,6 +567,35 @@ button:focus-visible {
   line-height: 1.5;
 }
 
+/* ---------- INFO PESSOAL ---------- */
+.personal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
 /* ---------- HABILIDADES ---------- */
 .skills__grid {
   display: grid;
@@ -1447,5 +1476,9 @@ button:focus-visible {
   }
   .cs-thumb {
     width: 60px;
+  }
+  .personal-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
