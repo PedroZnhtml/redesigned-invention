@@ -283,16 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (downloadATSBtn) {
     downloadATSBtn.addEventListener('click', () => {
-      // Cria elemento temporário para o conteúdo do currículo
-      const element = document.createElement('div');
-      element.id = 'cv-hidden-container';
-      element.style.position = 'fixed';
-      element.style.left = '-9999px';
-      element.style.top = '0';
-      element.style.width = '794px'; // Largura de página A4 a 96 DPI
-      element.style.opacity = '1';
-      
-      element.innerHTML = `
+      // Conteúdo HTML do currículo (string)
+      const cvHtml = `
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
           .cv-body {
@@ -301,6 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
             padding: 30px 40px;
             background: #ffffff;
             box-sizing: border-box;
+            width: 794px; /* Largura de página A4 a 96 DPI */
           }
           .cv-header {
             border-bottom: 2px solid #0078D4;
@@ -465,35 +458,18 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
-      document.body.appendChild(element);
-
       // Configurações do html2pdf
       const opt = {
         margin:       10,
         filename:     'Pedro_Silva_Manso_CV.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { 
-          scale: 2.5, 
-          useCORS: true, 
-          letterRendering: true, 
-          logging: false,
-          onclone: function (clonedDoc) {
-            const el = clonedDoc.getElementById('cv-hidden-container');
-            if (el) {
-              el.style.left = '0';
-              el.style.position = 'static';
-            }
-          }
-        },
+        html2canvas:  { scale: 2.5, useCORS: true, letterRendering: true, logging: false },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      // Gerar e baixar o PDF, depois remover o elemento temporário
-      html2pdf().set(opt).from(element).save().then(() => {
-        document.body.removeChild(element);
-      }).catch(err => {
+      // Gerar e baixar o PDF a partir da string HTML diretamente
+      html2pdf().set(opt).from(cvHtml).save().catch(err => {
         console.error('Erro ao gerar o PDF:', err);
-        document.body.removeChild(element);
       });
     });
   }
