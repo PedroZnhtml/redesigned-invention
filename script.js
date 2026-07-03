@@ -278,193 +278,208 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ----------------------------------------------------------
      12. GERADOR DE CURRÍCULO OTINIZADO PARA ATS
-  ---------------------------------------------------------- */
-  const downloadATSBtn = document.getElementById('downloadATSResume');
+  -----------------------------------  const downloadATSBtn = document.getElementById('downloadATSResume');
   
   if (downloadATSBtn) {
     downloadATSBtn.addEventListener('click', () => {
-      // Cria um iframe oculto temporário para impressão
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
+      // Cria elemento temporário para o conteúdo do currículo
+      const element = document.createElement('div');
+      element.style.position = 'absolute';
+      element.style.left = '-9999px';
+      element.style.top = '0';
+      element.style.width = '794px'; // Largura aproximada de uma página A4 a 96 DPI
       
-      const doc = iframe.contentWindow.document;
-      
-      const resumeHTML = `
-        <!DOCTYPE html>
-        <html lang="pt-BR">
-        <head>
-          <meta charset="UTF-8">
-          <title>Curriculo - Pedro Silva Manso</title>
-          <style>
-            @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
-            body {
-              font-family: Arial, Helvetica, sans-serif;
-              color: #333333;
-              line-height: 1.5;
-              margin: 40px;
-              font-size: 11pt;
-            }
-            .header {
-              border-bottom: 2px solid #0078D4;
-              padding-bottom: 15px;
-              margin-bottom: 20px;
-            }
-            .name {
-              font-size: 24pt;
-              font-weight: bold;
-              color: #0078D4;
-              margin: 0;
-            }
-            .role {
-              font-size: 14pt;
-              color: #555555;
-              margin: 5px 0 10px 0;
-              font-weight: bold;
-            }
-            .contact-info {
-              font-size: 10pt;
-              color: #666666;
-            }
-            .section {
-              margin-bottom: 22px;
-            }
-            .section-title {
-              font-size: 12pt;
-              font-weight: bold;
-              color: #0078D4;
-              border-bottom: 1px solid #dddddd;
-              padding-bottom: 3px;
-              margin-bottom: 8px;
-              text-transform: uppercase;
-            }
-            .summary {
-              text-align: justify;
-            }
-            .skills-list {
-              margin: 5px 0;
-              padding-left: 20px;
-            }
-            .skills-list li {
-              margin-bottom: 4px;
-            }
-            .job {
-              margin-bottom: 15px;
-            }
-            .job-header {
-              display: flex;
-              justify-content: space-between;
-              font-weight: bold;
-              color: #333333;
-            }
-            .job-title {
-              color: #444444;
-            }
-            .job-date {
-              color: #777777;
-              font-weight: normal;
-            }
-            .job-bullets {
-              margin: 5px 0;
-              padding-left: 20px;
-            }
-            .job-bullets li {
-              margin-bottom: 4px;
-            }
-            @media print {
-              body {
-                margin: 20px;
-              }
-            }
-          </style>
-        </head>
-        <body>
-          <div class="header">
-            <h1 class="name">Pedro Silva Manso</h1>
-            <div class="role">Desenvolvedor Power Apps & Power Platform</div>
-            <div class="contact-info">
-              Brasília, DF | (61) 99634-2098 | mansopedro94@gmail.com<br>
-              LinkedIn: linkedin.com/in/pedro-e-silva-manso-659a76249/
+      element.innerHTML = `
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
+          .cv-body {
+            font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            padding: 30px 40px;
+            background: #ffffff;
+            box-sizing: border-box;
+          }
+          .cv-header {
+            border-bottom: 2px solid #0078D4;
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+          }
+          .cv-name {
+            font-size: 24pt;
+            font-weight: 700;
+            color: #0078D4;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+          }
+          .cv-role {
+            font-size: 13pt;
+            font-weight: 600;
+            color: #334155;
+            margin: 4px 0 10px 0;
+          }
+          .cv-contact {
+            font-size: 9.5pt;
+            color: #64748b;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+          }
+          .cv-section {
+            margin-bottom: 16px;
+          }
+          .cv-section-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #0078D4;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 3px;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          .cv-text {
+            margin: 0;
+            text-align: justify;
+            color: #334155;
+            font-size: 9.5pt;
+          }
+          .cv-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #334155;
+            font-size: 9.5pt;
+          }
+          .cv-list li {
+            margin-bottom: 4px;
+          }
+          .cv-project-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 4px;
+            font-size: 9.5pt;
+          }
+          .cv-highlight-title {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 2px;
+            font-size: 9.5pt;
+          }
+          .cv-highlight-tech {
+            font-size: 8.5pt;
+            font-family: 'JetBrains Mono', monospace;
+            color: #0078D4;
+            margin-bottom: 4px;
+          }
+          .cv-highlight-desc {
+            margin: 0;
+            padding-left: 12px;
+            color: #334155;
+            font-size: 9.5pt;
+          }
+        </style>
+        
+        <div class="cv-body">
+          <!-- CABEÇALHO -->
+          <div class="cv-header">
+            <h1 class="cv-name">Pedro Silva Manso</h1>
+            <div class="cv-role">Desenvolvedor Power Apps & Power Platform</div>
+            <div class="cv-contact">
+              <span><strong>Localização:</strong> Brasília, DF</span>
+              <span>|</span>
+              <span><strong>Contato:</strong> (61) 99634-2098</span>
+              <span>|</span>
+              <span><strong>Email:</strong> mansopedro94@gmail.com</span>
+              <span>|</span>
+              <span><strong>LinkedIn:</strong> linkedin.com/in/pedro-e-silva-manso-659a76249/</span>
             </div>
           </div>
-          
-          <div class="section">
-            <div class="section-title">Resumo Profissional</div>
-            <p class="summary">
-              Meu nome é Pedro Silva Manso, tenho 21 anos e estou cursando Análise e Desenvolvimento de Sistemas. Sou uma pessoa curiosa e empenhada: gosto de entender a fundo cada problema antes de propor uma solução, e me dedico com disciplina a tudo que assumo — seja aprendendo uma tecnologia nova ou aperfeiçoando algo que já domino. Tenho focado minha trajetória na Power Platform, criando aplicações que transformam processos manuais e repetitivos em soluções simples e eficientes para quem usa no dia a dia. Estou sempre em busca de evoluir como desenvolvedor, unindo lógica de negócio a uma boa experiência de uso.
+
+          <!-- RESUMO PROFISSIONAL -->
+          <div class="cv-section">
+            <h2 class="cv-section-title">Resumo Profissional</h2>
+            <p class="cv-text">
+              Desenvolvedor Power Apps e Power Platform, com foco em transformar processos manuais e repetitivos em soluções digitais simples e eficientes. Atualmente cursando Análise e Desenvolvimento de Sistemas. Curioso, dedicado e autodidata, já construiu aplicações Canvas integradas ao SharePoint e automações com Power Automate, utilizadas na prática por equipes reais.
             </p>
           </div>
-          
-          <div class="section">
-            <div class="section-title">Habilidades Técnicas</div>
-            <ul class="skills-list">
-              <li><strong>Power Platform:</strong> Power Apps (Canvas e Model-driven), Power Automate (Fluxos de automação e aprovações), Power BI (Dashboards e relatórios analíticos), Dataverse (Modelagem de dados segura).</li>
-              <li><strong>Ecossistema Microsoft:</strong> SharePoint Online (Listas, portais, bibliotecas de documentos), Teams, Outlook, Microsoft 365.</li>
+
+          <!-- HABILIDADES TÉCNICAS -->
+          <div class="cv-section">
+            <h2 class="cv-section-title">Habilidades Técnicas</h2>
+            <ul class="cv-list">
+              <li><strong>Power Platform:</strong> Power Apps (Canvas e Model-driven), Power Automate (fluxos de automação e aprovações), Power BI (dashboards e relatórios analíticos), Dataverse (modelagem de dados segura).</li>
+              <li><strong>Ecossistema Microsoft:</strong> SharePoint Online (listas, portais, bibliotecas de documentos), Teams, Outlook, Microsoft 365.</li>
               <li><strong>Desenvolvimento & Banco de Dados:</strong> JavaScript, HTML5, CSS3, SQL Server, versionamento Git.</li>
             </ul>
           </div>
-          
-          <div class="section">
-            <div class="section-title">Experiência Profissional</div>
-            <div class="job">
-              <div class="job-header">
-                <span class="job-title">Desenvolvedor Power Platform / Power Apps</span>
-                <span class="job-date">2025 - Presente</span>
+
+          <!-- PROJETOS PRÁTICOS -->
+          <div class="cv-section">
+            <h2 class="cv-section-title">Projetos Práticos</h2>
+            <div>
+              <div class="cv-project-header">
+                <span style="color: #0f172a;">Desenvolvedor Power Platform (Projetos Dirigidos)</span>
+                <span style="font-weight: 500; color: #64748b;">2025 – Atual</span>
               </div>
-              <ul class="job-bullets">
-                <li>Desenvolvimento e implantação de aplicações Canvas sob medida, integradas ao SharePoint, facilitando a digitalização de formulários internos.</li>
-                <li>Modelagem de dados relacionais e segurança da informação utilizando SharePoint Lists e Dataverse.</li>
-                <li>Automatização de fluxos de trabalho complexos e aprovações de chamados de TI com Power Automate, enviando notificações automáticas para Teams e Outlook.</li>
-                <li>Criação de dashboards gerenciais e relatórios interativos com Power BI para monitoramento de SLA e indicadores operacionais.</li>
+              <ul class="cv-list">
+                <li>Desenvolvimento de aplicações Power Apps Canvas 100% responsivas, integradas a listas do SharePoint, substituindo processos manuais por fluxos digitais estruturados.</li>
+                <li>Modelagem de dados em SharePoint Lists para controle de solicitações, aprovações e histórico de status.</li>
+                <li>Automatização de fluxos de aprovação com Power Automate, incluindo notificações automáticas via Microsoft Teams.</li>
+                <li>Construção de telas de gestão com filtros dinâmicos (data, usuário, status) para tomada de decisão rápida por parte do gestor.</li>
               </ul>
             </div>
           </div>
-          
-          <div class="section">
-            <div class="section-title">Projetos em Destaque</div>
-            <div class="job" style="margin-bottom: 10px;">
-              <div class="job-header">
-                <span class="job-title">Banco de Horas — Controle de Saldo</span>
-              </div>
-              <ul class="job-bullets">
-                <li>Sistema em Power Apps Canvas e SharePoint para controle de horas positivas e negativas de colaboradores, com histórico por motivos e status visual de aprovação.</li>
-              </ul>
+
+          <!-- PROJETOS EM DESTAQUE -->
+          <div class="cv-section">
+            <h2 class="cv-section-title">Projetos em Destaque</h2>
+            
+            <!-- Projeto 1 -->
+            <div style="margin-bottom: 12px;">
+              <div class="cv-highlight-title">1. Sistema de Solicitação de Banco de Horas</div>
+              <div class="cv-highlight-tech">Power Apps Canvas · Power Automate · SharePoint</div>
+              <p class="cv-highlight-desc">Substituiu o controle manual em planilha Excel por um app com fluxo completo de solicitação, aprovação e notificações automáticas no Microsoft Teams.</p>
             </div>
-            <div class="job">
-              <div class="job-header">
-                <span class="job-title">Sistema de Chamados de TI</span>
-              </div>
-              <ul class="job-bullets">
-                <li>Aplicação integrada com listas de SharePoint para gerenciar a abertura, atribuição de responsáveis, status e acompanhamento de tempos de resposta (SLA) de chamados técnicos.</li>
-              </ul>
-            </div>
-          </div>
-          
-          <div class="section">
-            <div class="section-title">Formação</div>
-            <div class="job">
-              <div class="job-header">
-                <span class="job-title">Desenvolvimento de Sistemas & Engenharia de Software</span>
-                <span class="job-date">Estudos Dirigidos / Especialização Microsoft</span>
-              </div>
+
+            <!-- Projeto 2 -->
+            <div>
+              <div class="cv-highlight-title">2. Banco de Horas — Controle de Saldo</div>
+              <div class="cv-highlight-tech">Power Apps Canvas · SharePoint</div>
+              <p class="cv-highlight-desc">Primeiro projeto desenvolvido: controle de saldo de horas positivas e negativas, com histórico por motivo e status visual de aprovação.</p>
             </div>
           </div>
-        </body>
-        </html>
+
+          <!-- FORMAÇÃO -->
+          <div class="cv-section" style="margin-bottom: 0;">
+            <h2 class="cv-section-title">Formação</h2>
+            <ul class="cv-list">
+              <li><strong>Análise e Desenvolvimento de Sistemas</strong> — [NOME DA INSTITUIÇÃO] (em andamento)</li>
+              <li><strong>Formação complementar em Power Platform:</strong> estudos autodidatas via Microsoft Learn e cursos gratuitos.</li>
+            </ul>
+          </div>
+        </div>
       `;
       
-      doc.open();
-      doc.write(resumeHTML);
-      doc.close();
-      
-      // Impõe foco e executa janela de impressão
-      iframe.contentWindow.focus();
-      iframe.contentWindow.print();
-      
-      // Remove o iframe após o comando de impressão
-      setTimeout(() => {
-        document.body.removeChild(iframe);
-      }, 1000);
+      document.body.appendChild(element);
+
+      // Configurações do html2pdf
+      const opt = {
+        margin:       10,
+        filename:     'Pedro_Silva_Manso_CV.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2.5, useCORS: true, letterRendering: true, logging: false },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      // Gerar e baixar o PDF, depois remover o elemento temporário
+      html2pdf().set(opt).from(element).save().then(() => {
+        document.body.removeChild(element);
+      }).catch(err => {
+        console.error('Erro ao gerar o PDF:', err);
+        document.body.removeChild(element);
+      });
     });
   }
   /* ----------------------------------------------------------
