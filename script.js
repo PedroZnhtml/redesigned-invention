@@ -285,13 +285,12 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadATSBtn.addEventListener('click', () => {
       // Cria elemento temporário para o conteúdo do currículo
       const element = document.createElement('div');
+      element.id = 'cv-hidden-container';
       element.style.position = 'fixed';
-      element.style.left = '0';
+      element.style.left = '-9999px';
       element.style.top = '0';
       element.style.width = '794px'; // Largura de página A4 a 96 DPI
-      element.style.zIndex = '-9999';
-      element.style.opacity = '0.001';
-      element.style.pointerEvents = 'none';
+      element.style.opacity = '1';
       
       element.innerHTML = `
         <style>
@@ -473,7 +472,19 @@ document.addEventListener('DOMContentLoaded', () => {
         margin:       10,
         filename:     'Pedro_Silva_Manso_CV.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2.5, useCORS: true, letterRendering: true, logging: false },
+        html2canvas:  { 
+          scale: 2.5, 
+          useCORS: true, 
+          letterRendering: true, 
+          logging: false,
+          onclone: function (clonedDoc) {
+            const el = clonedDoc.getElementById('cv-hidden-container');
+            if (el) {
+              el.style.left = '0';
+              el.style.position = 'static';
+            }
+          }
+        },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
