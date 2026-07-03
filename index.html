@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedro e Silva Manso | Desenvolvedor Power Apps & Power Platform</title>
+  <meta name="description" content="Portfólio de Pedro e Silva Manso, Desenvolvedor Power Apps e Power Platform. Soluções inteligentes em Power Apps, Power Automate, SharePoint e Power BI.">
+
+  <!-- Fontes: Space Grotesk (display), Inter (texto), JetBrains Mono (utilitária/labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <!-- ===================== CURSOR / PROGRESS BAR DE SCROLL ===================== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===================== NAVBAR FIXA ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner container">
+      <a href="#home" class="navbar__logo">
+        <span class="navbar__logo-mark">PM</span>
+        <span class="navbar__logo-text">Pedro Manso</span>
+      </a>
+
+      <nav class="navbar__nav" id="navMenu">
+        <a href="#home" class="navbar__link" data-link>Início</a>
+        <a href="#about" class="navbar__link" data-link>Sobre</a>
+        <a href="#skills" class="navbar__link" data-link>Habilidades</a>
+        <a href="#projects" class="navbar__link" data-link>Projetos</a>
+        <a href="#journey" class="navbar__link" data-link>Jornada</a>
+        <a href="#contact" class="navbar__link" data-link>Contato</a>
+      </nav>
+
+      <a href="#contact" class="btn btn--small btn--primary navbar__cta">Vamos conversar</a>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+    <!-- Canvas com a rede de nós/conectores (elemento de assinatura) -->
+    <canvas class="hero__canvas" id="nodeCanvas"></canvas>
+    <div class="hero__glow"></div>
+
+    <div class="container hero__container">
+      <div class="hero__content reveal" data-reveal>
+        <p class="eyebrow"><span class="eyebrow__dot"></span>Disponível para novas oportunidades</p>
+
+        <h1 class="hero__name">
+          Pedro Silva <span class="text-gradient">Manso</span>
+        </h1>
+
+        <p class="hero__role">Desenvolvedor Power Apps <span class="hero__role-sep">|</span> Power Platform</p>
+
+        <p class="hero__desc">
+          Transformando processos manuais em soluções inteligentes através da Power Platform.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#projects" class="btn btn--primary">
+            Ver Projetos
+            <svg class="btn__icon" viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <button class="btn btn--ghost" id="downloadATSResume">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Currículo (ATS)
+          </button>
+          <a href="#contact" class="btn btn--ghost">Contato</a>
+        </div>
+
+        <div class="hero__socials">
+          <a href="https://www.linkedin.com/in/pedro-e-silva-manso-659a76249/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9Z"/></svg>
+          </a>
+          <a href="mailto:pedro.manso@email.com" aria-label="Email" class="social-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M3 6h18v12H3z"/><path fill="none" stroke="currentColor" stroke-width="1.7" d="m3 7 9 6 9-6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__photo-wrap reveal" data-reveal data-reveal-delay="150">
+        <div class="hero__photo-ring"></div>
+        <!-- 📸 Substitua o conteúdo abaixo por: <img src="sua-foto.jpg" alt="Pedro Silva Manso"> -->
+        <div class="hero__photo">
+          <img src="FOTO.JPG" alt="Pedro Silva Manso">
+        </div>
+        <div class="hero__badge">
+          <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Power Platform
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="hero__scroll-cue" aria-label="Rolar para baixo">
+      <span>scroll</span>
+      <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 4v16m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- ===================== SOBRE MIM ===================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section__head reveal" data-reveal>
+        <p class="eyebrow eyebrow--alt">Sobre mim</p>
+        <h2 class="section__title">Quem desenvolve por trás da tela</h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__text reveal" data-reveal>
+          <p>
+            Sou um desenvolvedor focado em <strong>Power Apps</strong> e <strong>Power Platform</strong>, apaixonado por criar soluções que automatizam processos e aumentam a produtividade das empresas.
+          </p>
+          <p>
+            Atualmente trabalho desenvolvendo aplicações corporativas, integrações com <strong>SharePoint</strong>, automações utilizando <strong>Power Automate</strong> e dashboards para acompanhamento de indicadores.
+          </p>
+          <p>
+            Estou sempre buscando aprender novas tecnologias e criar soluções modernas, intuitivas e eficientes — unindo lógica de negócio a uma experiência de uso simples para quem usa no dia a dia.
+          </p>
+
+          <a href="#contact" class="link-arrow">
+            Vamos construir algo juntos
+            <svg viewBox="0 0 24 24" width="18" height="18"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="about__stats reveal" data-reveal data-reveal-delay="150">
+          <div class="stat-card">
+            <span class="stat-card__number" data-counter="3">0</span>
+            <span class="stat-card__plus">+</span>
+            <p class="stat-card__label">Soluções corporativas entregues</p>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number" data-counter="6">0</span>
+            <span class="stat-card__plus">+</span>
+            <p class="stat-card__label">Ferramentas do ecossistema Microsoft</p>
+          </div>
+          <div class="stat-card stat-card--wide">
+            <p class="stat-card__quote">
+              “Automatizar não é eliminar pessoas do processo — é dar tempo de volta para o que importa.”
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HABILIDADES ===================== -->
+  <section class="section section--alt" id="skills">
+    <div class="container">
+      <div class="section__head reveal" data-reveal>
+        <p class="eyebrow eyebrow--alt">Habilidades</p>
+        <h2 class="section__title">Ferramentas que uso para construir soluções</h2>
+      </div>
+
+      <!-- Categoria 1: Power Platform -->
+      <h3 class="skills__subtitle reveal" data-reveal>Power Platform & Ecossistema Microsoft</h3>
+      <div class="skills__grid">
+
+        <div class="skill-card reveal" data-reveal>
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Power Apps</h3>
+          <p>Apps Canvas e Model-driven sob medida para processos internos.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="50">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 4v3h-3M6 20v-3h3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Power Automate</h3>
+          <p>Fluxos de aprovação, integrações e automação de tarefas repetitivas.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="100">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 6h12l4 4v8H4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 6v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>SharePoint</h3>
+          <p>Listas, bibliotecas e portais como base de dados e colaboração.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="150">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20v-3" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Power BI</h3>
+          <p>Dashboards visuais para leitura rápida de indicadores estratégicos.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="200">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.2" fill="currentColor"/><rect x="14" y="3" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Microsoft 365</h3>
+          <p>Teams, Outlook e SharePoint conectados em fluxos de trabalho únicos.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="250">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Dataverse</h3>
+          <p>Modelagem de dados segura e escalável para apps corporativos.</p>
+        </div>
+
+      </div>
+
+      <!-- Categoria 2: Desenvolvimento Web -->
+      <h3 class="skills__subtitle reveal" data-reveal style="margin-top: 50px;">Desenvolvimento Web & Banco de Dados</h3>
+      <div class="skills__grid">
+
+        <div class="skill-card reveal" data-reveal>
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><path d="m8 17-5-5 5-5M16 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>JavaScript</h3>
+          <p>Lógica customizada para componentes e integrações via API.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="50">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 3h16l-1.5 16L12 21l-6.5-2L4 3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.5 7h9l-.4 4.5H8.2M8.2 11.5l.3 3.5L12 16l3.5-1 .3-3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>HTML</h3>
+          <p>Estruturação semântica de páginas e componentes web.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="100">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="15" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/></svg>
+          </div>
+          <h3>CSS</h3>
+          <p>Layouts responsivos, animações e interfaces com identidade visual.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="150">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M9 9v11" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>SQL</h3>
+          <p>Consultas e modelagem relacional para dar suporte às aplicações.</p>
+        </div>
+
+        <div class="skill-card reveal" data-reveal data-reveal-delay="200">
+          <div class="skill-card__icon">
+            <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="18" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 8.2V15.8M7.8 11l8.4 0.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Git</h3>
+          <p>Versionamento e controle de histórico de código em equipe.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJETOS ===================== -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section__head reveal" data-reveal>
+        <p class="eyebrow eyebrow--alt">Projetos</p>
+        <h2 class="section__title">Soluções aplicadas a problemas reais</h2>
+      </div>
+
+      <div class="projects__grid">
+
+
+        <!-- Projeto 2: Banco de Horas -->
+        <article class="project-card reveal" data-reveal data-reveal-delay="100">
+          <div class="project-card__media" style="background: url('Tela Principal.png') center/cover; position: relative;">
+            <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
+            <svg viewBox="0 0 24 24" width="40" height="40" style="position:relative; z-index: 1;"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Power Apps Canvas · SharePoint</span>
+            <h3>Banco de Horas — Controle de Saldo</h3>
+            <p>Sistema completo de controle de saldo de banco de horas (crédito/débito) para colaboradores, com histórico por motivos e fluxo visual de aprovação.</p>
+            <div class="project-card__actions">
+              <button class="btn btn--small btn--primary" id="openCaseStudyBtn">Estudo de Caso</button>
+            </div>
+          </div>
+        </article>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MINHA JORNADA (TIMELINE) ===================== -->
+  <section class="section section--alt" id="journey">
+    <div class="container">
+      <div class="section__head reveal" data-reveal>
+        <p class="eyebrow eyebrow--alt">Minha jornada</p>
+        <h2 class="section__title">Do primeiro código à especialização</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline__line">
+          <div class="timeline__line-fill" id="timelineFill"></div>
+        </div>
+
+        <div class="timeline__item reveal" data-reveal>
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <span class="timeline__year">2024</span>
+            <h3>Início dos estudos em programação</h3>
+            <p>Primeiros contatos com lógica de programação, HTML, CSS e fundamentos de desenvolvimento web.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item reveal" data-reveal data-reveal-delay="100">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <span class="timeline__year">2025</span>
+            <h3>Primeiros projetos em Power Apps</h3>
+            <p>Desenvolvimento das primeiras aplicações em Power Apps integradas ao SharePoint para uso real em equipe.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item reveal" data-reveal data-reveal-delay="200">
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <span class="timeline__year">2026</span>
+            <h3>Desenvolvimento de soluções corporativas</h3>
+            <p>Atuação em projetos completos: apps, automações com Power Automate e dashboards com Power BI.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item timeline__item--goal reveal" data-reveal data-reveal-delay="300">
+          <div class="timeline__dot timeline__dot--goal"></div>
+          <div class="timeline__card timeline__card--goal">
+            <span class="timeline__year">Objetivo</span>
+            <h3>Especialista em Power Platform</h3>
+            <p>Aprofundar conhecimento em Dataverse, arquitetura de soluções e certificações Microsoft.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTATO ===================== -->
+  <section class="section section--contact" id="contact">
+    <div class="container">
+      <div class="section__head section__head--center reveal" data-reveal>
+        <p class="eyebrow eyebrow--alt">Contato</p>
+        <h2 class="section__title">Vamos transformar um processo manual em solução?</h2>
+        <p class="section__subtitle">Estou aberto a oportunidades como Desenvolvedor Power Apps / Power Platform. Escolha o canal que preferir.</p>
+      </div>
+
+      <div class="contact__grid">
+        <a href="https://www.linkedin.com/in/pedro-e-silva-manso-659a76249/" target="_blank" rel="noopener" class="contact-card reveal" data-reveal>
+          <div class="contact-card__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9Z"/></svg>
+          </div>
+          <div>
+            <h3>LinkedIn</h3>
+            <p>pedro-e-silva-manso-659a76249</p>
+          </div>
+        </a>
+
+        <a href="https://wa.me/5561996342098" target="_blank" rel="noopener" class="contact-card reveal" data-reveal data-reveal-delay="100">
+          <div class="contact-card__icon" style="background: rgba(37, 211, 102, 0.14); color: #25D366;">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.459 3.475 1.33 4.989L2 22l5.202-1.365a9.925 9.925 0 0 0 4.81 1.253h.005c5.506 0 9.988-4.482 9.988-9.988C22 6.482 17.518 2 12.012 2zm5.834 14.28c-.252.712-1.462 1.307-2.014 1.386-.48.068-.962.293-3.076-.534-2.696-1.053-4.423-3.791-4.558-3.97-.134-.18-1.088-1.447-1.088-2.76 0-1.314.685-1.959.954-2.228.27-.269.58-.337.77-.337.19 0 .385.002.553.01.173.008.406-.065.635.49.236.57.808 1.97.876 2.112.067.142.112.308.018.498-.094.19-.142.308-.282.47-.14.163-.293.364-.418.49-.142.142-.29.297-.123.582.167.285.742 1.223 1.597 1.983.844.752 1.554.984 1.838 1.127.284.143.45.12.617-.074.167-.194.725-.845.92-1.134.194-.29.387-.243.655-.143.268.099 1.7.801 1.99.94.29.14.482.21.553.332.072.122.072.709-.18 1.421z"/></svg>
+          </div>
+          <div>
+            <h3>WhatsApp</h3>
+            <p>(61) 99634-2098</p>
+          </div>
+        </a>
+
+        <a href="mailto:pedro.manso@email.com" class="contact-card reveal" data-reveal data-reveal-delay="200">
+          <div class="contact-card__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="1.7" d="M3 6h18v12H3z"/><path fill="none" stroke="currentColor" stroke-width="1.7" d="m3 7 9 6 9-6"/></svg>
+          </div>
+          <div>
+            <h3>Email</h3>
+            <p>pedro.manso@email.com</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="contact__cta reveal" data-reveal>
+        <a href="mailto:pedro.manso@email.com" class="btn btn--primary btn--large">Vamos conversar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2026 Pedro Silva Manso</p>
+      <p class="footer__sub">Desenvolvido com HTML, CSS e JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== BOTÃO VOLTAR AO TOPO ===================== -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+
+  <!-- ===================== MODAL CASE STUDY: BANCO DE HORAS ===================== -->
+  <div class="case-study-modal" id="caseStudyModal" aria-hidden="true" role="dialog" aria-label="Estudo de Caso do Projeto">
+    <div class="case-study__overlay" id="caseStudyOverlay"></div>
+    <div class="case-study__content">
+      <button class="case-study__close" id="caseStudyClose" aria-label="Fechar estudo de caso">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="case-study__header">
+        <span class="case-study__tag">Power Apps Canvas · SharePoint</span>
+        <h2 class="case-study__title">Banco de Horas — Controle de Saldo (Positivo/Negativo)</h2>
+      </div>
+
+      <div class="case-study__grid">
+        <!-- Coluna de Texto (Esquerda) -->
+        <div class="case-study__text">
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O problema</h3>
+            <p>Assim como no controle de horas extras, o acompanhamento do saldo de banco de horas da equipe (horas a compensar e horas já usadas) também era feito manualmente, sem um lugar único para consultar o saldo atual, sem histórico organizado dos motivos de cada lançamento, e sem status claro de aprovação para cada solicitação.</p>
+          </section>
+
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O que eu construí</h3>
+            <p>Este foi o meu primeiro aplicativo em <strong>Power Apps Canvas</strong> — o ponto de partida da minha jornada com a Power Platform. Criei um sistema para controlar o saldo de banco de horas de cada colaborador, permitindo tanto o registro de horas positivas (trabalhadas a mais) quanto negativas (horas usadas/compensadas).</p>
+            <ul class="cs-list">
+              <li><strong>Dashboard inicial:</strong> ao entrar, o colaborador é recebido com uma saudação personalizada e vê de forma imediata seu saldo de Horas Positivas, Horas Negativas e o total de Solicitações já feitas, em cards coloridos de fácil leitura.</li>
+              <li><strong>Escolha do tipo de solicitação:</strong> um modal simples pergunta "Qual solicitação deseja fazer?", com dois caminhos — Adicionar Horas (crédito) ou Usar Horas (débito) — cada um com sua cor (verde/vermelho) para reforçar visualmente o efeito no saldo.</li>
+              <li><strong>Minhas Solicitações:</strong> lista com todas as solicitações do colaborador, mostrando nome, motivo (ex: troca de escala, médico), horário de início e fim, quantidade de horas, tipo de lançamento e data/hora do registro — cada uma editável.</li>
+              <li><strong>Status de aprovação:</strong> cada solicitação é sinalizada por uma cor lateral conforme uma legenda clara — verde (Aprovado), vermelho (Negado) e laranja (Em análise).</li>
+              <li><strong>Área do Gestor:</strong> assim como no projeto seguinte, uma tela dedicada para o gestor avaliar as solicitações da equipe.</li>
+              <li><strong>Fonte de dados:</strong> lista do <strong>SharePoint</strong>, guardando cada lançamento e seu status.</li>
+            </ul>
+          </section>
+
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O que ele resolveu</h3>
+            <ul class="cs-list cs-list--success">
+              <li>Deu à equipe visibilidade em tempo real do próprio saldo de banco de horas, sem precisar perguntar ou consultar planilhas.</li>
+              <li>Organizou o histórico de lançamentos por motivo, evitando informação perdida ou dispersa.</li>
+              <li>Introduziu um fluxo de aprovação simples, com status visual claro para cada solicitação.</li>
+              <li>Foi a base de aprendizado que me levou a evoluir para soluções mais completas, como o sistema de horas extras com notificações automáticas via Power Automate.</li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Coluna de Galeria (Direita) -->
+        <div class="case-study__gallery">
+          <div class="cs-gallery__main">
+            <button class="cs-gallery__arrow cs-gallery__arrow--prev" id="csPrev" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <img src="Tela Principal.png" alt="Tela Principal" class="cs-gallery__img" id="csMainImg">
+            <button class="cs-gallery__arrow cs-gallery__arrow--next" id="csNext" aria-label="Próxima imagem"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="cs-gallery__caption" id="csCaption">Dashboard Inicial - Saldo e Solicitações</div>
+          
+          <div class="cs-gallery__thumbs" id="csThumbs">
+            <button class="cs-thumb active" data-index="0" data-caption="Dashboard Inicial - Saldo e Solicitações"><img src="Tela Principal.png" alt=""></button>
+            <button class="cs-thumb" data-index="1" data-caption="Minhas Solicitações - Histórico com Status"><img src="Tela de solicitaçoes usuario.png" alt=""></button>
+            <button class="cs-thumb" data-index="2" data-caption="Formulário de Lançamento de Horas"><img src="formulario solicitação.png" alt=""></button>
+            <button class="cs-thumb" data-index="3" data-caption="Área do Gestor - Avaliação da Equipe"><img src="Tela gestor.png" alt=""></button>
+            <button class="cs-thumb" data-index="4" data-caption="Aprovação de Solicitação pelo Gestor"><img src="aprovar solicitação.png" alt=""></button>
+            <button class="cs-thumb" data-index="5" data-caption="Reprovação de Solicitação pelo Gestor"><img src="reprovar solicitação.png" alt=""></button>
+            <button class="cs-thumb" data-index="6" data-caption="Notificação Automática no Microsoft Teams"><img src="mensagem teams gestor.png" alt=""></button>
+            <button class="cs-thumb" data-index="7" data-caption="Confirmação de Status para o Colaborador"><img src="resultado usuario.png" alt=""></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
