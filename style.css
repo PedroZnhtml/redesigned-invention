@@ -651,7 +651,7 @@ button:focus-visible {
 /* ---------- PROJETOS ---------- */
 .projects__grid {
   display: grid;
-  grid-template-columns: minmax(auto, 380px);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 380px));
   justify-content: center;
   gap: 26px;
 }

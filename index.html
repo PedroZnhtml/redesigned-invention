@@ -272,9 +272,25 @@
       <div class="projects__grid">
 
 
-        <!-- Projeto 2: Banco de Horas -->
+        <!-- Projeto 1: Sistema de Solicitação de Banco de Horas -->
         <article class="project-card reveal" data-reveal data-reveal-delay="100">
-          <div class="project-card__media" style="background: url('Tela Principal.png') center/cover; position: relative;">
+          <div class="project-card__media" style="background: url('assets/projetos/projeto1/Tela Principal.png') center/cover; position: relative;">
+            <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
+            <svg viewBox="0 0 24 24" width="40" height="40" style="position:relative; z-index: 1;"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__tag">Power Apps · Power Automate · SharePoint</span>
+            <h3>Sistema de Solicitação de Banco de Horas</h3>
+            <p>Substituição de planilhas manuais por um fluxo estruturado de solicitação, aprovação e notificação automática para toda a equipe.</p>
+            <div class="project-card__actions">
+              <button class="btn btn--small btn--primary" id="openCaseStudyBtn">Estudo de Caso</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projeto 2: Banco de Horas — Controle de Saldo (Positivo/Negativo) -->
+        <article class="project-card reveal" data-reveal data-reveal-delay="150">
+          <div class="project-card__media" style="background: url('assets/projetos/projeto2/Tela Principal.png') center/cover; position: relative;">
             <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
             <svg viewBox="0 0 24 24" width="40" height="40" style="position:relative; z-index: 1;"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -283,7 +299,7 @@
             <h3>Banco de Horas — Controle de Saldo</h3>
             <p>Sistema completo de controle de saldo de banco de horas (crédito/débito) para colaboradores, com histórico por motivos e fluxo visual de aprovação.</p>
             <div class="project-card__actions">
-              <button class="btn btn--small btn--primary" id="openCaseStudyBtn">Estudo de Caso</button>
+              <button class="btn btn--small btn--primary" id="openCaseStudyBtn2">Estudo de Caso</button>
             </div>
           </div>
         </article>
@@ -406,11 +422,79 @@
   </button>
 
 
-  <!-- ===================== MODAL CASE STUDY: BANCO DE HORAS ===================== -->
-  <div class="case-study-modal" id="caseStudyModal" aria-hidden="true" role="dialog" aria-label="Estudo de Caso do Projeto">
+  <!-- ===================== MODAL CASE STUDY 1: SISTEMA DE SOLICITAÇÃO DE BANCO DE HORAS ===================== -->
+  <div class="case-study-modal" id="caseStudyModal" aria-hidden="true" role="dialog" aria-label="Estudo de Caso do Projeto 1">
     <div class="case-study__overlay" id="caseStudyOverlay"></div>
     <div class="case-study__content">
       <button class="case-study__close" id="caseStudyClose" aria-label="Fechar estudo de caso">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="case-study__header">
+        <span class="case-study__tag">Power Apps Canvas · Power Automate · SharePoint</span>
+        <h2 class="case-study__title">Sistema de Solicitação de Banco de Horas</h2>
+      </div>
+
+      <div class="case-study__grid">
+        <!-- Coluna de Texto (Esquerda) -->
+        <div class="case-study__text">
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O problema</h3>
+            <p>Antes dessa solução, o controle de horas extras da equipe era feito manualmente: todo dia era gerada uma tabela nova no Excel, preenchida à mão, sem padronização entre colaboradores e sem histórico de aprovação. O gestor não tinha visibilidade centralizada de quem havia solicitado o quê, e as aprovações aconteciam de forma informal, por mensagem ou verbalmente — sem rastreabilidade.</p>
+          </section>
+
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O que eu construí</h3>
+            <p>Desenvolvi um aplicativo em <strong>Power Apps Canvas</strong>, 100% responsivo (containers fluidos, sem larguras fixas), que substitui completamente a planilha por um fluxo estruturado de solicitação, aprovação e notificação.</p>
+            <ul class="cs-list">
+              <li><strong>Formulário de solicitação:</strong> o colaborador registra entrada, saída, intervalo e quantidade de horas extras; o sistema calcula automaticamente o total de horas trabalhadas.</li>
+              <li><strong>Galeria de solicitações:</strong> cada colaborador visualiza apenas as próprias solicitações (filtro por usuário logado direto na fonte de dados), sempre com a mais recente em destaque no topo, com indicador visual de status (aprovado/reprovado).</li>
+              <li><strong>Área do Gestor:</strong> tela exclusiva, com filtros por data, colaborador e status, reunindo todas as solicitações pendentes de toda a equipe para aprovação ou reprovação — com modal de confirmação para evitar decisões acidentais.</li>
+              <li><strong>Notificações automáticas via Power Automate:</strong> ao criar uma solicitação, o gestor recebe um aviso no <strong>Microsoft Teams</strong>; ao decidir (aprovar/reprovar), o colaborador é notificado automaticamente com o resultado, sem precisar acessar o app para saber.</li>
+              <li><strong>Fonte de dados:</strong> lista do <strong>SharePoint</strong>, funcionando como fonte única de verdade para todas as solicitações e status.</li>
+            </ul>
+          </section>
+
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O que isso resolveu</h3>
+            <ul class="cs-list cs-list--success">
+              <li>Eliminou o preenchimento manual e repetitivo da planilha diária.</li>
+              <li>Criou histórico e rastreabilidade de todas as aprovações.</li>
+              <li>Reduziu o tempo de resposta do gestor, que agora é notificado em tempo real.</li>
+              <li>Padronizou o processo de solicitação de horas extras para toda a equipe.</li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Coluna de Galeria (Direita) -->
+        <div class="case-study__gallery">
+          <div class="cs-gallery__main">
+            <button class="cs-gallery__arrow cs-gallery__arrow--prev" id="csPrev" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <img src="assets/projetos/projeto1/Tela Principal.png" alt="Tela Principal" class="cs-gallery__img" id="csMainImg">
+            <button class="cs-gallery__arrow cs-gallery__arrow--next" id="csNext" aria-label="Próxima imagem"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="cs-gallery__caption" id="csCaption">Tela Principal</div>
+          
+          <div class="cs-gallery__thumbs" id="csThumbs">
+            <button class="cs-thumb active" data-index="0" data-caption="Tela Principal"><img src="assets/projetos/projeto1/Tela Principal.png" alt=""></button>
+            <button class="cs-thumb" data-index="1" data-caption="Tela de solicitações do usuário"><img src="assets/projetos/projeto1/Tela de solicitaçoes usuario.png" alt=""></button>
+            <button class="cs-thumb" data-index="2" data-caption="Formulário de solicitação"><img src="assets/projetos/projeto1/formulario solicitação.png" alt=""></button>
+            <button class="cs-thumb" data-index="3" data-caption="Tela do Gestor"><img src="assets/projetos/projeto1/Tela gestor.png" alt=""></button>
+            <button class="cs-thumb" data-index="4" data-caption="Modal: Aprovar Solicitação"><img src="assets/projetos/projeto1/aprovar solicitação.png" alt=""></button>
+            <button class="cs-thumb" data-index="5" data-caption="Modal: Reprovar Solicitação"><img src="assets/projetos/projeto1/reprovar solicitação.png" alt=""></button>
+            <button class="cs-thumb" data-index="6" data-caption="Notificação Teams para Gestor"><img src="assets/projetos/projeto1/mensagem teams gestor.png" alt=""></button>
+            <button class="cs-thumb" data-index="7" data-caption="Resultado Notificado ao Usuário"><img src="assets/projetos/projeto1/resultado usuario.png" alt=""></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== MODAL CASE STUDY 2: BANCO DE HORAS — CONTROLE DE SALDO ===================== -->
+  <div class="case-study-modal" id="caseStudyModal2" aria-hidden="true" role="dialog" aria-label="Estudo de Caso do Projeto 2">
+    <div class="case-study__overlay" id="caseStudyOverlay2"></div>
+    <div class="case-study__content">
+      <button class="case-study__close" id="caseStudyClose2" aria-label="Fechar estudo de caso">
         <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
 
@@ -435,7 +519,7 @@
               <li><strong>Escolha do tipo de solicitação:</strong> um modal simples pergunta "Qual solicitação deseja fazer?", com dois caminhos — Adicionar Horas (crédito) ou Usar Horas (débito) — cada um com sua cor (verde/vermelho) para reforçar visualmente o efeito no saldo.</li>
               <li><strong>Minhas Solicitações:</strong> lista com todas as solicitações do colaborador, mostrando nome, motivo (ex: troca de escala, médico), horário de início e fim, quantidade de horas, tipo de lançamento e data/hora do registro — cada uma editável.</li>
               <li><strong>Status de aprovação:</strong> cada solicitação é sinalizada por uma cor lateral conforme uma legenda clara — verde (Aprovado), vermelho (Negado) e laranja (Em análise).</li>
-              <li><strong>Área do Gestor:</strong> assim como no projeto seguinte, uma tela dedicada para o gestor avaliar as solicitações da equipe.</li>
+              <li><strong>Área do Gestor:</strong> uma tela dedicada para o gestor avaliar as solicitações da equipe.</li>
               <li><strong>Fonte de dados:</strong> lista do <strong>SharePoint</strong>, guardando cada lançamento e seu status.</li>
             </ul>
           </section>
@@ -454,21 +538,21 @@
         <!-- Coluna de Galeria (Direita) -->
         <div class="case-study__gallery">
           <div class="cs-gallery__main">
-            <button class="cs-gallery__arrow cs-gallery__arrow--prev" id="csPrev" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <img src="Tela Principal.png" alt="Tela Principal" class="cs-gallery__img" id="csMainImg">
-            <button class="cs-gallery__arrow cs-gallery__arrow--next" id="csNext" aria-label="Próxima imagem"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="cs-gallery__arrow cs-gallery__arrow--prev" id="csPrev2" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <img src="assets/projetos/projeto2/Tela Principal.png" alt="Tela Principal" class="cs-gallery__img" id="csMainImg2">
+            <button class="cs-gallery__arrow cs-gallery__arrow--next" id="csNext2" aria-label="Próxima imagem"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           </div>
-          <div class="cs-gallery__caption" id="csCaption">Dashboard Inicial - Saldo e Solicitações</div>
+          <div class="cs-gallery__caption" id="csCaption2">Dashboard Inicial - Saldo e Solicitações</div>
           
-          <div class="cs-gallery__thumbs" id="csThumbs">
-            <button class="cs-thumb active" data-index="0" data-caption="Dashboard Inicial - Saldo e Solicitações"><img src="Tela Principal.png" alt=""></button>
-            <button class="cs-thumb" data-index="1" data-caption="Minhas Solicitações - Histórico com Status"><img src="Tela de solicitaçoes usuario.png" alt=""></button>
-            <button class="cs-thumb" data-index="2" data-caption="Formulário de Lançamento de Horas"><img src="formulario solicitação.png" alt=""></button>
-            <button class="cs-thumb" data-index="3" data-caption="Área do Gestor - Avaliação da Equipe"><img src="Tela gestor.png" alt=""></button>
-            <button class="cs-thumb" data-index="4" data-caption="Aprovação de Solicitação pelo Gestor"><img src="aprovar solicitação.png" alt=""></button>
-            <button class="cs-thumb" data-index="5" data-caption="Reprovação de Solicitação pelo Gestor"><img src="reprovar solicitação.png" alt=""></button>
-            <button class="cs-thumb" data-index="6" data-caption="Notificação Automática no Microsoft Teams"><img src="mensagem teams gestor.png" alt=""></button>
-            <button class="cs-thumb" data-index="7" data-caption="Confirmação de Status para o Colaborador"><img src="resultado usuario.png" alt=""></button>
+          <div class="cs-gallery__thumbs" id="csThumbs2">
+            <button class="cs-thumb-2 active" data-index="0" data-caption="Dashboard Inicial - Saldo e Solicitações"><img src="assets/projetos/projeto2/Tela Principal.png" alt=""></button>
+            <button class="cs-thumb-2" data-index="1" data-caption="Minhas Solicitações - Histórico com Status"><img src="assets/projetos/projeto2/Tela de solicitaçoes usuario.png" alt=""></button>
+            <button class="cs-thumb-2" data-index="2" data-caption="Formulário de Lançamento de Horas"><img src="assets/projetos/projeto2/formulario solicitação.png" alt=""></button>
+            <button class="cs-thumb-2" data-index="3" data-caption="Área do Gestor - Avaliação da Equipe"><img src="assets/projetos/projeto2/Tela gestor.png" alt=""></button>
+            <button class="cs-thumb-2" data-index="4" data-caption="Aprovação de Solicitação pelo Gestor"><img src="assets/projetos/projeto2/aprovar solicitação.png" alt=""></button>
+            <button class="cs-thumb-2" data-index="5" data-caption="Reprovação de Solicitação pelo Gestor"><img src="assets/projetos/projeto2/reprovar solicitação.png" alt=""></button>
+            <button class="cs-thumb-2" data-index="6" data-caption="Notificação Automática no Microsoft Teams"><img src="assets/projetos/projeto2/mensagem teams gestor.png" alt=""></button>
+            <button class="cs-thumb-2" data-index="7" data-caption="Confirmação de Status para o Colaborador"><img src="assets/projetos/projeto2/resultado usuario.png" alt=""></button>
           </div>
         </div>
       </div>

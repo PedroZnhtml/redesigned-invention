@@ -546,4 +546,87 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ----------------------------------------------------------
+     14. CASE STUDY MODAL 2 (BANCO DE HORAS — CONTROLE DE SALDO)
+  ---------------------------------------------------------- */
+  const caseStudyBtn2 = document.getElementById('openCaseStudyBtn2');
+  const caseStudyModal2 = document.getElementById('caseStudyModal2');
+  const caseStudyClose2 = document.getElementById('caseStudyClose2');
+  const caseStudyOverlay2 = document.getElementById('caseStudyOverlay2');
+
+  const csMainImg2 = document.getElementById('csMainImg2');
+  const csCaption2 = document.getElementById('csCaption2');
+  const csThumbs2 = document.querySelectorAll('.cs-thumb-2');
+  const csPrev2 = document.getElementById('csPrev2');
+  const csNext2 = document.getElementById('csNext2');
+
+  let csCurrentIndex2 = 0;
+  let csImagesData2 = [];
+  if (csThumbs2.length > 0) {
+    csImagesData2 = Array.from(csThumbs2).map(thumb => ({
+      src: thumb.querySelector('img').getAttribute('src'),
+      caption: thumb.getAttribute('data-caption')
+    }));
+  }
+
+  function updateCaseStudySlide2(index) {
+    if (csImagesData2.length === 0) return;
+    if (index < 0) index = csImagesData2.length - 1;
+    if (index >= csImagesData2.length) index = 0;
+    csCurrentIndex2 = index;
+
+    csMainImg2.style.opacity = 0;
+    
+    setTimeout(() => {
+      csMainImg2.src = csImagesData2[csCurrentIndex2].src;
+      csCaption2.textContent = csImagesData2[csCurrentIndex2].caption;
+      
+      csThumbs2.forEach(t => t.classList.remove('active'));
+      csThumbs2[csCurrentIndex2].classList.add('active');
+      
+      csThumbs2[csCurrentIndex2].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      
+      csMainImg2.style.opacity = 1;
+    }, 150);
+  }
+
+  function openCaseStudy2() {
+    if (!caseStudyModal2) return;
+    caseStudyModal2.classList.add('is-open');
+    caseStudyModal2.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    updateCaseStudySlide2(0);
+    caseStudyModal2.focus();
+  }
+
+  function closeCaseStudy2() {
+    if (!caseStudyModal2) return;
+    caseStudyModal2.classList.remove('is-open');
+    caseStudyModal2.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (caseStudyBtn2) caseStudyBtn2.focus();
+  }
+
+  if (caseStudyBtn2 && caseStudyModal2) {
+    caseStudyBtn2.addEventListener('click', openCaseStudy2);
+    caseStudyClose2.addEventListener('click', closeCaseStudy2);
+    caseStudyOverlay2.addEventListener('click', closeCaseStudy2);
+
+    csPrev2.addEventListener('click', () => updateCaseStudySlide2(csCurrentIndex2 - 1));
+    csNext2.addEventListener('click', () => updateCaseStudySlide2(csCurrentIndex2 + 1));
+
+    csThumbs2.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        updateCaseStudySlide2(parseInt(thumb.getAttribute('data-index'), 10));
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!caseStudyModal2.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeCaseStudy2();
+      if (e.key === 'ArrowLeft') updateCaseStudySlide2(csCurrentIndex2 - 1);
+      if (e.key === 'ArrowRight') updateCaseStudySlide2(csCurrentIndex2 + 1);
+    });
+  }
+
 });
