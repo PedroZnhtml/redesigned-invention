@@ -278,7 +278,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ----------------------------------------------------------
      12. GERADOR DE CURRÍCULO OTINIZADO PARA ATS
-  -----------------------------------  const downloadATSBtn = document.getElementById('downloadATSResume');
+  ---------------------------------------------------------- */
+  const downloadATSBtn = document.getElementById('downloadATSResume');
   
   if (downloadATSBtn) {
     downloadATSBtn.addEventListener('click', () => {
@@ -458,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="cv-section" style="margin-bottom: 0;">
             <h2 class="cv-section-title">Formação</h2>
             <ul class="cv-list">
-              <li><strong>Análise e Desenvolvimento de Sistemas</strong> — [GRAN FACULDADE] (em andamento)</li>
+              <li><strong>Análise e Desenvolvimento de Sistemas</strong> — Gran Faculdade (em andamento)</li>
               <li><strong>Formação complementar em Power Platform:</strong> estudos autodidatas via Microsoft Learn e cursos gratuitos.</li>
             </ul>
           </div>
