@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const csMainImg = document.getElementById('csMainImg');
   const csCaption = document.getElementById('csCaption');
-  const csThumbs = document.querySelectorAll('.cs-thumb');
+  const csThumbs = caseStudyModal ? caseStudyModal.querySelectorAll('.cs-thumb') : [];
   const csPrev = document.getElementById('csPrev');
   const csNext = document.getElementById('csNext');
 
@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const csMainImg2 = document.getElementById('csMainImg2');
   const csCaption2 = document.getElementById('csCaption2');
-  const csThumbs2 = document.querySelectorAll('.cs-thumb-2');
+  const csThumbs2 = caseStudyModal2 ? caseStudyModal2.querySelectorAll('.cs-thumb') : [];
   const csPrev2 = document.getElementById('csPrev2');
   const csNext2 = document.getElementById('csNext2');
 
