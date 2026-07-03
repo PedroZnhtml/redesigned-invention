@@ -284,10 +284,13 @@ document.addEventListener('DOMContentLoaded', () => {
     downloadATSBtn.addEventListener('click', () => {
       // Cria elemento temporário para o conteúdo do currículo
       const element = document.createElement('div');
-      element.style.position = 'absolute';
-      element.style.left = '-9999px';
+      element.style.position = 'fixed';
+      element.style.left = '0';
       element.style.top = '0';
-      element.style.width = '794px'; // Largura aproximada de uma página A4 a 96 DPI
+      element.style.width = '794px'; // Largura de página A4 a 96 DPI
+      element.style.zIndex = '-9999';
+      element.style.opacity = '0.001';
+      element.style.pointerEvents = 'none';
       
       element.innerHTML = `
         <style>
@@ -455,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="cv-section" style="margin-bottom: 0;">
             <h2 class="cv-section-title">Formação</h2>
             <ul class="cv-list">
-              <li><strong>Análise e Desenvolvimento de Sistemas</strong> — [NOME DA INSTITUIÇÃO] (em andamento)</li>
+              <li><strong>Análise e Desenvolvimento de Sistemas</strong> — [GRAN FACULDADE] (em andamento)</li>
               <li><strong>Formação complementar em Power Platform:</strong> estudos autodidatas via Microsoft Learn e cursos gratuitos.</li>
             </ul>
           </div>
