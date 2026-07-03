@@ -748,6 +748,70 @@ button:focus-visible {
 
 .project-card__actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
+/* ---------- DEPOIMENTOS (RECOMENDAÇÕES) ---------- */
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-stars {
+  color: #fbbf24; /* Amber-400 */
+  margin-bottom: 16px;
+  display: flex;
+  gap: 4px;
+}
+
+.testimonial-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.testimonial-author-info h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.testimonial-link {
+  margin-left: auto;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.testimonial-link:hover {
+  color: #0a66c2; /* Cor oficial do LinkedIn */
+}
+
 /* ---------- TIMELINE (JORNADA) ---------- */
 .timeline {
   position: relative;
