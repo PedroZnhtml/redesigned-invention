@@ -195,7 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const hero = document.getElementById('home');
     let width, height, nodes;
-    const NODE_COUNT_BASE = 70; // densidade por área de referência
+
+    // Posição do mouse (fora da tela por padrão, sem interação até o usuário mover o cursor)
+    const mouse = { x: -9999, y: -9999, radius: 140 };
 
     function resizeCanvas() {
       width = canvas.width = hero.offsetWidth;
@@ -212,18 +214,30 @@ document.addEventListener('DOMContentLoaded', () => {
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
         r: Math.random() * 1.6 + 1,
+        baseR: 0, // preenchido logo abaixo
       };
     }
 
     function step() {
       ctx.clearRect(0, 0, width, height);
 
-      // Atualiza posições
+      // Atualiza posições (com leve resposta ao mouse, tipo campo magnético suave)
       nodes.forEach((n) => {
         n.x += n.vx;
         n.y += n.vy;
         if (n.x < 0 || n.x > width) n.vx *= -1;
         if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        const dx = n.x - mouse.x;
+        const dy = n.y - mouse.y;
+        const distToMouse = Math.sqrt(dx * dx + dy * dy);
+
+        if (distToMouse < mouse.radius) {
+          // Empurra suavemente o nó para longe do cursor, criando um efeito de "abrir espaço"
+          const force = (1 - distToMouse / mouse.radius) * 0.6;
+          n.x += (dx / (distToMouse || 1)) * force;
+          n.y += (dy / (distToMouse || 1)) * force;
+        }
       });
 
       // Desenha conexões entre nós próximos
@@ -245,11 +259,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Desenha os nós
+      // Desenha os nós — os que estão perto do cursor ganham um leve brilho a mais
       nodes.forEach((n) => {
+        const dx = n.x - mouse.x;
+        const dy = n.y - mouse.y;
+        const distToMouse = Math.sqrt(dx * dx + dy * dy);
+        const nearMouse = distToMouse < mouse.radius;
+
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(120, 190, 255, 0.85)';
+        ctx.arc(n.x, n.y, nearMouse ? n.r * 1.6 : n.r, 0, Math.PI * 2);
+        ctx.fillStyle = nearMouse
+          ? 'rgba(180, 220, 255, 0.95)'
+          : 'rgba(120, 190, 255, 0.85)';
         ctx.fill();
       });
 
@@ -263,6 +284,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(resizeCanvas, 200);
+    });
+
+    // Interação com o mouse (só ativa em telas com cursor, não atrapalha o toque no mobile)
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', () => {
+      mouse.x = -9999;
+      mouse.y = -9999;
     });
   }
 
