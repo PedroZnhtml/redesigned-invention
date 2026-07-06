@@ -283,14 +283,14 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (downloadATSBtn) {
     downloadATSBtn.addEventListener('click', () => {
-      // Cria o wrapper absoluto escondido atrás do fundo da página
+      // Cria um container fora da tela para não piscar na tela do usuário
+      const container = document.createElement('div');
+      container.style.position = 'absolute';
+      container.style.left = '-9999px';
+      container.style.top = '0';
+
+      // Cria o wrapper limpo que será lido pelo html2pdf
       const wrapper = document.createElement('div');
-      wrapper.style.position = 'absolute';
-      wrapper.style.left = '0';
-      wrapper.style.top = '0';
-      wrapper.style.zIndex = '-9999';
-      wrapper.style.opacity = '1';
-      wrapper.style.pointerEvents = 'none';
 
       // Conteúdo HTML do currículo
       wrapper.innerHTML = `
@@ -467,7 +467,8 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
-      document.body.appendChild(wrapper);
+      container.appendChild(wrapper);
+      document.body.appendChild(container);
 
       // Configurações do html2pdf
       const opt = {
@@ -486,10 +487,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Gerar e baixar o PDF a partir do wrapper montado no DOM
       html2pdf().set(opt).from(wrapper).save().then(() => {
-        document.body.removeChild(wrapper);
+        document.body.removeChild(container);
       }).catch(err => {
         console.error('Erro ao gerar o PDF:', err);
-        document.body.removeChild(wrapper);
+        document.body.removeChild(container);
       });
     });
   }
