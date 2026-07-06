@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ---------------------------------------------------------- */
   const canvas = document.getElementById('nodeCanvas');
 
-  if (canvas && !prefersReducedMotion) {
+  if (canvas) {
     const ctx = canvas.getContext('2d');
     const hero = document.getElementById('home');
     let width, height, nodes;
