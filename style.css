@@ -48,6 +48,58 @@
   --t-slow: 0.8s var(--ease);
 }
 
+:root.light-mode {
+  /* Base clara */
+  --black: #f8fafc;
+  --gray-900: #f1f5f9;
+  --gray-850: #e2e8f0;
+  --gray-800: #cbd5e1;
+  --gray-700: #94a3b8;
+  --gray-500: #64748b;
+
+  /* Texto */
+  --white: #0f172a;
+  --text-primary: #1e293b;
+  --text-muted: #475569;
+  --text-faint: #64748b;
+
+  /* Glassmorphism invertido */
+  --glass-bg: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-bg-strong: rgba(0, 0, 0, 0.06);
+}
+
+:root.light-mode ::selection {
+  background: var(--blue);
+  color: #ffffff;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: var(--t-fast);
+  margin-right: 8px;
+}
+.theme-toggle:hover {
+  color: var(--blue);
+  background: var(--glass-bg);
+}
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+.icon-moon { display: none; }
+.icon-sun { display: block; }
+
+:root.light-mode .icon-sun { display: none; }
+:root.light-mode .icon-moon { display: block; }
+
 /* ---------- CUSTOM SCROLLBAR ---------- */
 ::-webkit-scrollbar {
   width: 8px;
@@ -326,6 +378,9 @@ button:focus-visible {
 .navbar__toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ---------- HERO ---------- */
+:root.light-mode .hero__glow {
+  background: radial-gradient(circle at center, rgba(0,120,212,0.15), transparent 70%);
+}
 .hero {
   position: relative;
   min-height: 100vh;
