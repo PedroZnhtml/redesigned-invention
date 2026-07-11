@@ -9,6 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ----------------------------------------------------------
+     0. THEME TOGGLE (Modo Noturno / Claro)
+  ---------------------------------------------------------- */
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isLightMode = document.documentElement.classList.toggle('light-mode');
+      localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+    });
+  }
+
+  /* ----------------------------------------------------------
      1. NAVBAR: fundo ao rolar + menu mobile
   ---------------------------------------------------------- */
   const navbar = document.getElementById('navbar');
