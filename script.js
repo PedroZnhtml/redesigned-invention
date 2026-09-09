@@ -570,7 +570,45 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadATSBtn.style.opacity = '1';
 
         const pdfUrl = URL.createObjectURL(pdfBlob);
-        window.open(pdfUrl, '_blank');
+        
+        // Abre uma nova aba com interface própria para garantir o nome do arquivo no download
+        const newTab = window.open('', '_blank');
+        if (newTab) {
+          newTab.document.write(`
+            <!DOCTYPE html>
+            <html lang="pt-BR">
+            <head>
+              <meta charset="UTF-8">
+              <title>Pedro_Silva_Manso_CV.pdf</title>
+              <style>
+                body { margin: 0; padding: 0; background: #333; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+                .toolbar { background: #1e1e1e; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 5px rgba(0,0,0,0.5); z-index: 10; border-bottom: 1px solid #333; }
+                .title { color: #f3f2f1; font-size: 14px; font-weight: 500; }
+                .download-btn { background: #0078D4; color: white; border: none; padding: 8px 18px; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
+                .download-btn:hover { background: #005a9e; }
+                iframe { border: none; flex-grow: 1; width: 100%; }
+              </style>
+            </head>
+            <body>
+              <div class="toolbar">
+                <div class="title">Pedro_Silva_Manso_CV.pdf</div>
+                <a href="\${pdfUrl}" download="Pedro_Silva_Manso_CV.pdf" class="download-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Salvar PDF
+                </a>
+              </div>
+              <iframe src="\${pdfUrl}#toolbar=0" title="Visualização do PDF"></iframe>
+            </body>
+            </html>
+          `);
+          newTab.document.close();
+        } else {
+          // Fallback silencioso se o bloqueador de pop-ups impedir a nova aba
+          const a = document.createElement('a');
+          a.href = pdfUrl;
+          a.download = 'Pedro_Silva_Manso_CV.pdf';
+          a.click();
+        }
       }).catch(err => {
         console.error('Erro ao gerar o PDF:', err);
         document.body.removeChild(container);
