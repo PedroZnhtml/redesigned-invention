@@ -699,4 +699,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ----------------------------------------------------------
+     15. CASE STUDY MODAL 3 (IT SERVICE DESK MANAGER)
+  ---------------------------------------------------------- */
+  const caseStudyBtn3 = document.getElementById('openCaseStudyBtn3');
+  const caseStudyModal3 = document.getElementById('caseStudyModal3');
+  const caseStudyClose3 = document.getElementById('caseStudyClose3');
+  const caseStudyOverlay3 = document.getElementById('caseStudyOverlay3');
+
+  const csMainImg3 = document.getElementById('csMainImg3');
+  const csCaption3 = document.getElementById('csCaption3');
+  const csThumbs3 = caseStudyModal3 ? caseStudyModal3.querySelectorAll('.cs-thumb') : [];
+  const csPrev3 = document.getElementById('csPrev3');
+  const csNext3 = document.getElementById('csNext3');
+
+  let csCurrentIndex3 = 0;
+  let csImagesData3 = [];
+  if (csThumbs3.length > 0) {
+    csImagesData3 = Array.from(csThumbs3).map(thumb => ({
+      src: thumb.querySelector('img').getAttribute('src'),
+      caption: thumb.getAttribute('data-caption')
+    }));
+  }
+
+  function updateCaseStudySlide3(index) {
+    if (csImagesData3.length === 0) return;
+    if (index < 0) index = csImagesData3.length - 1;
+    if (index >= csImagesData3.length) index = 0;
+    csCurrentIndex3 = index;
+
+    csMainImg3.style.opacity = 0;
+    
+    setTimeout(() => {
+      csMainImg3.src = csImagesData3[csCurrentIndex3].src;
+      csCaption3.textContent = csImagesData3[csCurrentIndex3].caption;
+      
+      csThumbs3.forEach(t => t.classList.remove('active'));
+      csThumbs3[csCurrentIndex3].classList.add('active');
+      
+      csThumbs3[csCurrentIndex3].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      
+      csMainImg3.style.opacity = 1;
+    }, 150);
+  }
+
+  function openCaseStudy3() {
+    if (!caseStudyModal3) return;
+    caseStudyModal3.classList.add('is-open');
+    caseStudyModal3.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    updateCaseStudySlide3(0);
+    caseStudyModal3.focus();
+  }
+
+  function closeCaseStudy3() {
+    if (!caseStudyModal3) return;
+    caseStudyModal3.classList.remove('is-open');
+    caseStudyModal3.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (caseStudyBtn3) caseStudyBtn3.focus();
+  }
+
+  if (caseStudyBtn3 && caseStudyModal3) {
+    caseStudyBtn3.addEventListener('click', openCaseStudy3);
+    caseStudyClose3.addEventListener('click', closeCaseStudy3);
+    caseStudyOverlay3.addEventListener('click', closeCaseStudy3);
+
+    csPrev3.addEventListener('click', () => updateCaseStudySlide3(csCurrentIndex3 - 1));
+    csNext3.addEventListener('click', () => updateCaseStudySlide3(csCurrentIndex3 + 1));
+
+    csThumbs3.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        updateCaseStudySlide3(parseInt(thumb.getAttribute('data-index'), 10));
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!caseStudyModal3.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeCaseStudy3();
+      if (e.key === 'ArrowLeft') updateCaseStudySlide3(csCurrentIndex3 - 1);
+      if (e.key === 'ArrowRight') updateCaseStudySlide3(csCurrentIndex3 + 1);
+    });
+  }
+
+
 });
