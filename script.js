@@ -332,20 +332,8 @@ document.addEventListener('DOMContentLoaded', () => {
       downloadATSBtn.style.pointerEvents = 'none';
       downloadATSBtn.style.opacity = '0.7';
 
-      // Cria um container fora da tela (mas na origem exata) para o html2canvas não perder a referência do grid
-      const container = document.createElement('div');
-      container.style.position = 'fixed';
-      container.style.left = '0';
-      container.style.top = '0';
-      container.style.opacity = '0';
-      container.style.pointerEvents = 'none';
-      container.style.zIndex = '-9999';
-
-      // Cria o wrapper limpo que será lido pelo html2pdf
-      const wrapper = document.createElement('div');
-
-      // Conteúdo HTML do currículo
-      wrapper.innerHTML = `
+      // Conteúdo HTML do currículo (Template Isolado)
+      const cvHTML = `
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
           @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
@@ -536,9 +524,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
-      
-      container.appendChild(wrapper);
-      document.body.appendChild(container);
 
       // Configurações do html2pdf
       const opt = {
@@ -550,16 +535,13 @@ document.addEventListener('DOMContentLoaded', () => {
           useCORS: true, 
           letterRendering: true, 
           logging: false,
-          scrollY: 0,
-          x: 0,
-          y: 0
+          windowWidth: 794
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      // Gerar o PDF e abrir em nova aba para pré-visualização
-      html2pdf().set(opt).from(wrapper).output('blob').then((pdfBlob) => {
-        document.body.removeChild(container);
+      // Passando a string HTML diretamente e gerando o Blob
+      html2pdf().set(opt).from(cvHTML).output('blob').then((pdfBlob) => {
         downloadATSBtn.innerHTML = originalText;
         downloadATSBtn.style.pointerEvents = 'auto';
         downloadATSBtn.style.opacity = '1';
@@ -568,10 +550,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(pdfUrl, '_blank');
       }).catch(err => {
         console.error('Erro ao gerar o PDF:', err);
-        document.body.removeChild(container);
         downloadATSBtn.innerHTML = originalText;
         downloadATSBtn.style.pointerEvents = 'auto';
         downloadATSBtn.style.opacity = '1';
+        alert('Houve um erro ao gerar o currículo. Tente novamente.');
       });
     });
   }
