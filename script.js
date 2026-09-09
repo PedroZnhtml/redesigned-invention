@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     },
-    { threshold: 0.6 }
+    { threshold: 0.1 }
   );
 
   counters.forEach((counter) => counterObserver.observe(counter));
@@ -326,6 +326,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (downloadATSBtn) {
     downloadATSBtn.addEventListener('click', () => {
+      
+      const originalText = downloadATSBtn.innerHTML;
+      downloadATSBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Gerando...';
+      downloadATSBtn.style.pointerEvents = 'none';
+      downloadATSBtn.style.opacity = '0.7';
+
       // Cria um container fora da tela para não piscar na tela do usuário
       const container = document.createElement('div');
       container.style.position = 'absolute';
@@ -531,9 +537,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Gerar e baixar o PDF a partir do wrapper montado no DOM
       html2pdf().set(opt).from(wrapper).save().then(() => {
         document.body.removeChild(container);
+        downloadATSBtn.innerHTML = originalText;
+        downloadATSBtn.style.pointerEvents = 'auto';
+        downloadATSBtn.style.opacity = '1';
       }).catch(err => {
         console.error('Erro ao gerar o PDF:', err);
         document.body.removeChild(container);
+        downloadATSBtn.innerHTML = originalText;
+        downloadATSBtn.style.pointerEvents = 'auto';
+        downloadATSBtn.style.opacity = '1';
       });
     });
   }
