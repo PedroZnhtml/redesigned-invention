@@ -329,11 +329,15 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const originalText = downloadATSBtn.innerHTML;
       downloadATSBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Gerando...';
-      // Cria um container na origem exata para o html2canvas não perder a referência do grid
+      // Cria um container na origem exata com largura forçada para evitar deslocamento
       const container = document.createElement('div');
       container.style.position = 'fixed';
       container.style.left = '0';
       container.style.top = '0';
+      container.style.width = '794px';
+      container.style.margin = '0';
+      container.style.padding = '0';
+      container.style.textAlign = 'left';
       container.style.opacity = '0';
       container.style.pointerEvents = 'none';
       container.style.zIndex = '-9999';
@@ -547,8 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
           useCORS: true, 
           letterRendering: true, 
           logging: false,
-          x: 0,
-          y: 0
+          windowWidth: 794
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
