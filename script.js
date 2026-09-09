@@ -329,9 +329,12 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const originalText = downloadATSBtn.innerHTML;
       downloadATSBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Gerando...';
-      // Cria um container na origem exata com largura forçada para evitar deslocamento
+      // Força o scroll pro topo para o html2canvas não calcular offsets errados
+      window.scrollTo(0, 0);
+
+      // Cria um container absoluto na origem exata (0,0) do documento
       const container = document.createElement('div');
-      container.style.position = 'fixed';
+      container.style.position = 'absolute';
       container.style.left = '0';
       container.style.top = '0';
       container.style.width = '794px';
@@ -547,11 +550,14 @@ document.addEventListener('DOMContentLoaded', () => {
         filename:     'Pedro_Silva_Manso_CV.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { 
-          scale: 2.5, 
+          scale: 2, 
           useCORS: true, 
           letterRendering: true, 
           logging: false,
-          windowWidth: 794
+          width: 794,
+          windowWidth: 794,
+          x: 0,
+          y: 0
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
