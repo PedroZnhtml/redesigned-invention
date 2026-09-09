@@ -344,7 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Conteúdo HTML do currículo
       wrapper.innerHTML = `
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+          
           .cv-body {
             font-family: 'Inter', sans-serif;
             color: #0f172a;
@@ -352,7 +354,14 @@ document.addEventListener('DOMContentLoaded', () => {
             background: #fff;
             padding: 30px 40px;
             box-sizing: border-box;
-            width: 718px; /* Ajuste para caber certinho na área de conteúdo do A4 com 10mm de margem */
+            width: 794px; /* Largura A4 em 96dpi */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+          }
+          .cv-body p, .cv-body li, .cv-body div {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
           }
           .cv-header {
             border-bottom: 2px solid #0078D4;
@@ -538,7 +547,8 @@ document.addEventListener('DOMContentLoaded', () => {
           useCORS: true, 
           letterRendering: true, 
           logging: false,
-          scrollY: 0
+          scrollY: 0,
+          windowWidth: 794
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
