@@ -503,6 +503,13 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="cv-highlight-tech">Power Apps Canvas · SharePoint</div>
               <p class="cv-highlight-desc">Primeiro projeto desenvolvido: controle de saldo de horas positivas e negativas, com histórico por motivo e status visual de aprovação.</p>
             </div>
+
+            <!-- Projeto 3 -->
+            <div style="margin-top: 12px;">
+              <div class="cv-highlight-title">3. IT Service Desk Manager</div>
+              <div class="cv-highlight-tech">Power Apps Canvas · Power Automate · SharePoint Lists · Power Fx</div>
+              <p class="cv-highlight-desc">Sistema completo de gestão de chamados de TI que substituiu controles manuais. Implementa arquitetura relacional (3 listas conectadas), dashboard de métricas e filtros de triagem delegáveis otimizados para performance.</p>
+            </div>
           </div>
 
           <!-- FORMAÇÃO -->
