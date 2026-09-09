@@ -332,11 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
       downloadATSBtn.style.pointerEvents = 'none';
       downloadATSBtn.style.opacity = '0.7';
 
-      // Cria um container fora da tela para não piscar na tela do usuário
+      // Cria um container fora da tela (mas na origem exata) para o html2canvas não perder a referência do grid
       const container = document.createElement('div');
-      container.style.position = 'absolute';
-      container.style.left = '-9999px';
+      container.style.position = 'fixed';
+      container.style.left = '0';
       container.style.top = '0';
+      container.style.opacity = '0';
+      container.style.pointerEvents = 'none';
+      container.style.zIndex = '-9999';
 
       // Cria o wrapper limpo que será lido pelo html2pdf
       const wrapper = document.createElement('div');
@@ -548,17 +551,21 @@ document.addEventListener('DOMContentLoaded', () => {
           letterRendering: true, 
           logging: false,
           scrollY: 0,
-          windowWidth: 794
+          x: 0,
+          y: 0
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      // Gerar e baixar o PDF a partir do wrapper montado no DOM
-      html2pdf().set(opt).from(wrapper).save().then(() => {
+      // Gerar o PDF e abrir em nova aba para pré-visualização
+      html2pdf().set(opt).from(wrapper).output('blob').then((pdfBlob) => {
         document.body.removeChild(container);
         downloadATSBtn.innerHTML = originalText;
         downloadATSBtn.style.pointerEvents = 'auto';
         downloadATSBtn.style.opacity = '1';
+
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        window.open(pdfUrl, '_blank');
       }).catch(err => {
         console.error('Erro ao gerar o PDF:', err);
         document.body.removeChild(container);
