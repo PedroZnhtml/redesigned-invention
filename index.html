@@ -642,6 +642,70 @@
     </div>
   </div>
 
+  <!-- ===================== MODAL CASE STUDY 3: IT SERVICE DESK MANAGER ===================== -->
+  <div class="case-study-modal" id="caseStudyModal3" aria-hidden="true" role="dialog" aria-label="Estudo de Caso do Projeto 3">
+    <div class="case-study__overlay" id="caseStudyOverlay3"></div>
+    <div class="case-study__content">
+      <button class="case-study__close" id="caseStudyClose3" aria-label="Fechar estudo de caso">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="case-study__header">
+        <span class="case-study__tag">Power Apps · Power Automate · SharePoint Lists · Power Fx</span>
+        <h2 class="case-study__title">IT Service Desk Manager</h2>
+      </div>
+
+      <div class="case-study__grid">
+        <!-- Coluna de Texto (Esquerda) -->
+        <div class="case-study__text">
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O problema</h3>
+            <p>O controle de chamados de TI era feito manualmente em planilhas, dificultando o acompanhamento do ciclo de vida das solicitações (abertura, triagem, acompanhamento e encerramento) e tornando a comunicação e histórico descentralizados.</p>
+          </section>
+
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O que eu construí</h3>
+            <p>Desenvolvi um sistema completo de gestão de chamados de TI em <strong>Power Apps (Canvas App)</strong>, substituindo a planilha e colocando em produção para uma equipe real.</p>
+            <ul class="cs-list">
+              <li><strong>Modelagem Relacional:</strong> 3 listas relacionadas no SharePoint (Chamados, Comentários, Histórico) garantindo a integridade dos dados e histórico de interações.</li>
+              <li><strong>Padrões Técnicos:</strong> Uso de named formulas, delegação com Filter/Search/SortByColumns, função Patch formatando colunas Choice, navegação usando Container+Gallery e separação inteligente de contexto com Defaults() vs. registro selecionado.</li>
+              <li><strong>Dashboard Analytics:</strong> Indicadores agregados via fórmulas de contagem diretas na lista SharePoint e feed recente de atualizações.</li>
+              <li><strong>Gestão Estruturada:</strong> Grid com busca avançada combinando categorias, prioridades e status sem perder performance (delegável).</li>
+              <li><strong>Tema Dinâmico:</strong> Alternância global entre Modo Claro e Escuro, usando variáveis de contexto.</li>
+            </ul>
+          </section>
+
+          <section class="cs-section">
+            <h3 class="cs-section__title"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> O que ele resolveu</h3>
+            <ul class="cs-list cs-list--success">
+              <li>Eliminou o uso de planilhas manuais na gestão de chamados.</li>
+              <li>Estruturou de forma rastreável o ciclo de vida e os comentários de cada chamado.</li>
+              <li>Criou um fluxo de triagem muito mais ágil usando os filtros combinados.</li>
+              <li>Otimizou a performance mesmo com o crescimento de dados devido à delegação correta das consultas.</li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Coluna de Galeria (Direita) -->
+        <div class="case-study__gallery">
+          <div class="cs-gallery__main">
+            <button class="cs-gallery__arrow cs-gallery__arrow--prev" id="csPrev3" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <img src="assets/projetos/projeto3/dashboard.png" alt="Dashboard do sistema com indicadores agregados e chamados recentes" class="cs-gallery__img" id="csMainImg3">
+            <button class="cs-gallery__arrow cs-gallery__arrow--next" id="csNext3" aria-label="Próxima imagem"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="cs-gallery__caption" id="csCaption3">Dashboard — Camada de indicadores agregados (total, abertos, em andamento, resolvidos)</div>
+          
+          <div class="cs-gallery__thumbs" id="csThumbs3">
+            <button class="cs-thumb active" data-index="0" data-caption="Dashboard — Camada de indicadores agregados (total, abertos, em andamento, resolvidos) calculados sobre a lista SharePoint via fórmulas de contagem, com feed dos chamados recentes ordenado por atualização."><img src="assets/projetos/projeto3/dashboard.png" alt="Miniatura do Dashboard com indicadores"></button>
+            <button class="cs-thumb" data-index="1" data-caption="Gestão de Chamados — Grid principal com busca (Search) combinada a filtros compostos por Categoria, Prioridade e Status, usando Filter/SortByColumns delegável para manter performance mesmo com a lista crescendo no SharePoint."><img src="assets/projetos/projeto3/gestao-de-chamados.png" alt="Miniatura da Gestão de Chamados com filtros"></button>
+            <button class="cs-thumb" data-index="2" data-caption="Modo Escuro — Demonstração do toggle de tema, aplicado globalmente via variável de contexto e refletido em todas as telas do app."><img src="assets/projetos/projeto3/modo-escuro.png" alt="Miniatura da interface em modo escuro"></button>
+            <button class="cs-thumb" data-index="3" data-caption="Detalhes do Chamado — Tela de detalhe com Patch para atualização de status e criação de comentários em lista relacionada (Comentários), navegação por parâmetro de registro selecionado, e exibição de metadados via lookup de colunas do SharePoint."><img src="assets/projetos/projeto3/detalhes-do-chamado.png" alt="Miniatura da tela Detalhes do Chamado"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="script.js?v=5"></script>
 </body>
