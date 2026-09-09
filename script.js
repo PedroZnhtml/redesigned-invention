@@ -346,12 +346,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap');
           .cv-body {
-            font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
-            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            color: #0f172a;
+            line-height: 1.4;
+            background: #fff;
             padding: 30px 40px;
-            background: #ffffff;
             box-sizing: border-box;
-            width: 794px; /* Largura de página A4 a 96 DPI */
+            width: 718px; /* Ajuste para caber certinho na área de conteúdo do A4 com 10mm de margem */
           }
           .cv-header {
             border-bottom: 2px solid #0078D4;
@@ -455,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="cv-section">
             <h2 class="cv-section-title">Resumo Profissional</h2>
             <p class="cv-text">
-              Desenvolvedor Power Apps e Power Platform, com foco em transformar processos manuais e repetitivos em soluções digitais simples e eficientes. Atualmente cursando Análise e Desenvolvimento de Sistemas. Curioso, dedicado e autodidata, já construiu aplicações Canvas integradas ao SharePoint e automações com Power Automate, utilizadas na prática por equipes reais.
+              Desenvolvedor Power Apps e Power Platform, com foco em transformar processos manuais e repetitivos em soluções digitais simples e eficientes. Antes de migrar para tecnologia, atuou em área não-técnica — o que trouxe uma visão prática de negócio e de comunicação com usuário final para o desenvolvimento das soluções. Atualmente cursando Análise e Desenvolvimento de Sistemas. Curioso, dedicado e autodidata, já construiu aplicações Canvas integradas ao SharePoint e automações com Power Automate, utilizadas na prática por equipes reais.
             </p>
           </div>
 
@@ -518,6 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <ul class="cv-list">
               <li><strong>Análise e Desenvolvimento de Sistemas</strong> — Gran Faculdade (em andamento)</li>
               <li><strong>Formação complementar em Power Platform:</strong> estudos autodidatas via Microsoft Learn e cursos gratuitos.</li>
+              <li><strong>Certificação Microsoft PL-900 (Power Platform Fundamentals)</strong> — em preparação</li>
             </ul>
           </div>
         </div>
