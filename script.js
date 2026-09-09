@@ -329,11 +329,20 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const originalText = downloadATSBtn.innerHTML;
       downloadATSBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; animation: spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Gerando...';
-      downloadATSBtn.style.pointerEvents = 'none';
-      downloadATSBtn.style.opacity = '0.7';
+      // Cria um container na origem exata para o html2canvas não perder a referência do grid
+      const container = document.createElement('div');
+      container.style.position = 'fixed';
+      container.style.left = '0';
+      container.style.top = '0';
+      container.style.opacity = '0';
+      container.style.pointerEvents = 'none';
+      container.style.zIndex = '-9999';
 
-      // Conteúdo HTML do currículo (Template Isolado)
-      const cvHTML = `
+      // Cria o wrapper limpo que será lido pelo html2pdf
+      const wrapper = document.createElement('div');
+
+      // Conteúdo HTML do currículo
+      wrapper.innerHTML = `
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
           @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
@@ -524,6 +533,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
+      
+      container.appendChild(wrapper);
+      document.body.appendChild(container);
 
       // Configurações do html2pdf
       const opt = {
@@ -535,13 +547,15 @@ document.addEventListener('DOMContentLoaded', () => {
           useCORS: true, 
           letterRendering: true, 
           logging: false,
-          windowWidth: 794
+          x: 0,
+          y: 0
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      // Passando a string HTML diretamente e gerando o Blob
-      html2pdf().set(opt).from(cvHTML).output('blob').then((pdfBlob) => {
+      // Gerar o PDF e abrir em nova aba para pré-visualização
+      html2pdf().set(opt).from(wrapper).output('blob').then((pdfBlob) => {
+        document.body.removeChild(container);
         downloadATSBtn.innerHTML = originalText;
         downloadATSBtn.style.pointerEvents = 'auto';
         downloadATSBtn.style.opacity = '1';
@@ -550,6 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open(pdfUrl, '_blank');
       }).catch(err => {
         console.error('Erro ao gerar o PDF:', err);
+        document.body.removeChild(container);
         downloadATSBtn.innerHTML = originalText;
         downloadATSBtn.style.pointerEvents = 'auto';
         downloadATSBtn.style.opacity = '1';
